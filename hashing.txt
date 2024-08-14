@@ -1,0 +1,19 @@
+echo "Frase" > arq1.txt
+
+cat arq1.txt
+//pegando um hashing
+sha
+//criando hashing pro arq1
+sha512sum arq1.txt
+
+echo "Frases" > arq2.txt
+//criando hashing pro arq2
+sha512sum arq2.txt
+
+//fazendo o relatorio dos 2 hashings
+sha512sum arq12.txt arq1.txt > relatorio.hashing
+//mostrando o hashing dos 2 arquivos
+cat relatorio.hashing
+
+//verificação do hashing
+sha512sum -c arq1.txt arq2.txt relatorio.hashing
