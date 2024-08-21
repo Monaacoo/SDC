@@ -1,0 +1,11 @@
+sudo apt install john
+
+cd /usr/share/wordlists
+-ls
+sudo gunzip rockyou.txt.gz
+cd ~
+cd /Desktop
+
+sudo john --wordlist=/usr/share/wordlists/rockyou.txt arq_hashes.txt
+
+
