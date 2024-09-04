@@ -1,0 +1,44 @@
+gpg--gen-key
+// criar as chaves	
+
+gpg --output exArquivopublic.asc --armor --export email@email.com
+// vai criar um arquivo a partir da chave publica para alguém se comunicar com 
+// quem criou a chave.
+
+cat exAquivopublico.asc
+//para ler o arquivo de comunicação
+
+echo "Está mensagem será criptografada" > mensagem.txt
+//criar um arquivo "mensagem.txt" com uma mensagem.
+
+gpg --recipient email@email.com --encrypt mensagem.txt
+// indica a cominicação com quem criou as chaves ecriptografa o arquivo "mensagem.txt"
+
+file mensagem.txt*
+//listar todos os arquivos parecidos com "mensagem.txt"
+
+gpg --decrypt mensagem.txt.gpg
+// descriptografa o arquivo "mensagem.txt" pedindo a senhada chave privada.
+ 
+
+EXERCICIO
+Efetue o download dos arquivos melanie-private.asc, melanie-pub.asc e flag.gpg
+1- A partir do par de chaves pertencentes a Melanie, descubra qual email foi usado para gerar o par(utilize a opção --import
+
+2- Use a senha "princess123" para descriptografar o arquivo flag.gpg e indique seu conteudo
+
+
+--acesse onde esta as pastas
+cd Desktop
+
+--faça o import dos arquivos com a primeira palavra "melanie"
+gpg --import melanie*
+
+--coloque a senha quando pedir
+-vai retornar o email melanie@example.com
+
+--faça o decrypt do arquivo
+gpg --decrypt flag.gpg
+--coloque a senha quando pedir
+--vai retornar a mensagem {A-Flag-4-Royalty}
+
