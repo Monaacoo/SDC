@@ -1,0 +1,68 @@
+A Polícia Federal deflagrou a operação CashBack que investiga supostas
+fraudes financeiras através de transações eletrônicas. Dentre os suspeitos,
+o cidadão Fulano P. Kareta teve seu laptop apreendido pela PF. A polícia
+teve acesso à conversas criptografadas do Fulano e está tentando encontrar
+indícios de uma conta laranja para onde Fulano efetuava as transações
+bancárias. Nos arquivos de interesse, a PF criou uma pasta denominada
+FPK, onde está toda informação digital possível para se chegar à conta
+laranja de Fulano. Será que conseguimos ajudar à PF?
+
+1 – Há um arquivo com hashes de possíveis senhas para quebrarmos a criptografia da
+conversa de Fulano. Utilize o comando john para quebrar o hash. Quais as senhas
+descobertas?
+
+//instalar john the riiper
+sudo apt install john
+
+//acessou a pasta wordlist
+cd /usr/share/wordlists
+
+//descompactar o arquivo rockyou
+sudo gunzip rockyou.txt.gz
+
+//voltar para o Desktop, onde o arquivo esta
+ cd Desktop
+
+//descompactar o arquivo pedido
+sudo gunzip FPK.tar.gz
+
+//ver qual o tipo de hashing
+sudo john --wordlist=/usr/share/wordlist/rockyou.txt FPK.tar
+
+//colocar o tipo de hashing pedido
+sudo john --wordlist=/usr/share/wordlist/rockyou.txt FPK.tar --format=Raw-MD5
+
+2 – Com o arquivo resultante da quebra dos hashes da questão acima, tente
+descriptografar a mensagem detalhes.txt.gpg através do uso da chave privada de
+Fulano. Qual a mensagem escondida?
+
+//importa a chave privada
+gpg --import private.asc
+
+//ele vai pedir a senha e tenta as senhas do exercicio anterior, a senha é (gohanbananajjh)
+//descriptografar o arquivo depois de colocar a senha
+gpg --decrypt detalhes.txt.gpg
+
+3 – Qual o arquivo com os dados corretos que deveremos considerar de acordo com a
+mensagem contida no detalhes.txt.gpg?
+
+//entrar na pasta antonio
+cd antonio
+
+//descompactar a pasta
+sudo gunzip antonio.tar.gz
+
+//criar uma pasta qualquer so para colocar os arquivos e acessar ela
+cd pasta
+
+//criptografar todas as pastas para achar a diferente
+sha512sum anotonio*
+
+
+4 – Esse arquivo está codificado. Depois de quebrada a codificação, qual o conteúdo
+real do arquivo da questão 3?
+
+//acesse o arquivo diferente e veja q ele termina com '=', indentificando que é base64, utilize base64 para descriptografar
+cat antonio666.txt | base64 -d
+ou
+echo (o hash) | base -d
