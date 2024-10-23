@@ -1,0 +1,8 @@
+Introdução à Codificação Web Segura
+
+Exercise: True or false: A trust boundary exists between the two application servers because they connect to the same shared folder.
+-True
+
+What is the SHA256 hash of the provided sri_exercise.js file?
+- colocar o comando 
+sha256sum sri_exercise.js
